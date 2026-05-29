@@ -1,0 +1,6 @@
+{
+  "name": "Subway Surfers Premium",
+  "description": "A high-fidelity 3D Subway Surfers clone built using React and Three.js with stunning custom-designed trains, obstacles, and buildings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
