@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  touch-action: none;
+  /* Prevent pull-to-refresh on mobile Chrome and Safari */
+  overscroll-behavior: none;
+  /* Prevent user selection and zoom on touch */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Ensure scrollable overlays can actually be scrolled on mobile touch screens */
+.overflow-y-auto {
+  touch-action: pan-y !important;
+}
+.overflow-x-auto {
+  touch-action: pan-x !important;
+}
+
