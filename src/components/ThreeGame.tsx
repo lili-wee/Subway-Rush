@@ -2270,11 +2270,13 @@ export const ThreeGame: React.FC<ThreeGameProps> = ({
     let pStartX = 0;
     let pStartY = 0;
     const onPointerDown = (e: PointerEvent) => {
+      if (e.pointerType === 'touch') return;
       pStartX = e.clientX;
       pStartY = e.clientY;
     };
 
     const onPointerUp = (e: PointerEvent) => {
+      if (e.pointerType === 'touch') return;
       if (!pStartX || !pStartY) return;
       const endX = e.clientX;
       const endY = e.clientY;
@@ -2301,8 +2303,12 @@ export const ThreeGame: React.FC<ThreeGameProps> = ({
     };
 
     const onTouchMove = (e: TouchEvent) => {
-      if (e.cancelable) {
-        e.preventDefault();
+      // Only block touchmove / scrolling default browser behaviors when actively playing the game.
+      // This allows standard HTML elements in menus and shops to natively scroll.
+      if (stateRef.current.gameState === 'PLAYING') {
+        if (e.cancelable) {
+          e.preventDefault();
+        }
       }
     };
 
