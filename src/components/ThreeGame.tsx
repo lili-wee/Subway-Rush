@@ -2300,8 +2300,15 @@ export const ThreeGame: React.FC<ThreeGameProps> = ({
       pStartY = 0;
     };
 
+    const onTouchMove = (e: TouchEvent) => {
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+    };
+
     window.addEventListener('keydown', onKeyDown);
     window.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: false });
     window.addEventListener('touchend', onTouchEnd, { passive: true });
     window.addEventListener('pointerdown', onPointerDown, { passive: true });
     window.addEventListener('pointerup', onPointerUp, { passive: true });
@@ -3099,6 +3106,7 @@ export const ThreeGame: React.FC<ThreeGameProps> = ({
       window.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchmove', onTouchMove);
       window.removeEventListener('touchend', onTouchEnd);
       window.removeEventListener('pointerdown', onPointerDown);
       window.removeEventListener('pointerup', onPointerUp);
